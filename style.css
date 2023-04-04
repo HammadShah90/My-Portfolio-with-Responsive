@@ -43,27 +43,69 @@
 /* hero background image */
 
 .bgimage {
-    height:100vh;
-    background: url('./Assets/BackGroundImg.webp');
-    background-size:cover;
-    background-position: center;
-    position:relative;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    gap: 2px;
+    flex-wrap: wrap;
+    overflow: hidden;
 }
+
+.bgimage::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#000, #ff5e00, #000);
+    animation: animate 4s linear infinite;
+    overflow: hidden;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+.bgimage span {
+    position: relative;
+    display: block;
+    background: #2c2c2c;
+    width: calc(6.25vw - 2px);
+    height: calc(6.25vw - 2px);
+    z-index: 2;
+    transition: 1.5s;
+}
+
+.bgimage span:hover {
+    background: #ff5e00;
+    transition: 0s;
+}
+
 
 /* text css above hero image*/
 
 .hero-salam {
-    font-size: 5.5rem;
+    font-size: 8.5rem;
     text-shadow: 8px 8px 8px #000000;
 }
+
 .hero_title {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     text-shadow: 8px 8px 8px #000000;
 }
 
 .hero_desc {
     font-size: 2rem;
 }
+
 .hero-text {
     text-align: center;
     position: absolute;
@@ -71,6 +113,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: #ffe9cd;
+    z-index: 3;
 }
 
 .wrapper .dynamic-text {
@@ -91,17 +134,48 @@
 
 @keyframes slide {
     100% {
-        top:-360px;
+        top: -360px;
     }
 }
 
 
 /* about section image css */
-.imageAboutPage {
-    width: 70%;
-    margin-left: 30px;
+
+.imgBgBox {
+    height: 300px;
+    width: 330px;
+    background-color: #3d6ac4;
     border-radius: 20px;
-    box-shadow: -6px -6px 10px rgba(114, 76, 5, 0.7), 6px 6px 10px rgba(221, 111, 47, 0.7);
+    box-shadow: inset 6px 6px 6px #3c7cfd, inset -6px -6px 6px #3c7cfd;
+}
+
+.myImg {
+    position: relative;
+    left: 50px;
+    top: 50px;
+    animation: move 1s linear infinite;
+}
+
+.myImg img {
+    position: absolute;
+    width: 310px;
+    top: -65px;
+    left: 21px;
+}
+
+@keyframes move {
+    0% {
+        top: 50px;
+    }
+
+    50% {
+        top: 40px;
+    }
+
+    100% {
+        top: 50px;
+    }
+
 }
 
 
@@ -139,12 +213,19 @@
     font-size: 36px;
     cursor: pointer;
 }
-.fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover,.fa-linkedin:hover, .fa-twitch:hover {
+
+.fa-facebook:hover,
+.fa-instagram:hover,
+.fa-twitter:hover,
+.fa-linkedin:hover,
+.fa-twitch:hover {
     color: #ff5e00;
 }
+
 .fab {
     color: #000000;
 }
+
 /* footer styling */
 #footer {
     background-color: #808080;
@@ -171,4 +252,27 @@
     margin-top: 5rem;
     padding-top: 4rem;
     padding-bottom: 4rem;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 900px) {
+    .bgimage span {
+        width: calc(10vw - 2px);
+        height: calc(10vw - 2px);
+    }
+}
+
+@media (max-width: 600px) {
+    .bgimage span {
+        width: calc(20vw - 2px);
+        height: calc(20vw - 2px);
+    }
 }
